@@ -1,0 +1,300 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Huellitas API",
+    "description": "Huellitas pets grooming API",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://huellitas-nodejs-api.herokuapp.com"
+    }
+  ],
+  "paths": {
+    "/": {
+      "get": {
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/productos": {
+      "get": {
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Operacion exitosa",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/myReferencedProductArray"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "example": "any"
+                  },
+                  "precio": {
+                    "example": "any"
+                  },
+                  "link": {
+                    "example": "any"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/locales": {
+      "get": {
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Operacion exitosa",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/myReferencedLocalArray"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "example": "any"
+                  },
+                  "direccion": {
+                    "example": "any"
+                  },
+                  "horario": {
+                    "example": "any"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/productos/{id}": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Operacion exitosa",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Producto"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      },
+      "delete": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/api/locales/{id}": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Operacion exitosa",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Local"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      },
+      "delete": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Producto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number",
+            "description": "numero de la boleta",
+            "example": 1
+          },
+          "name": {
+            "type": "string",
+            "description": "xxx",
+            "example": "Curtación"
+          },
+          "precio": {
+            "type": "string",
+            "description": "xxx",
+            "example": "desde 99.99"
+          },
+          "link": {
+            "type": "string",
+            "description": "xxx",
+            "example": "Despachado"
+          }
+        },
+        "example": {
+          "id": 4,
+          "name": "Manicure",
+          "precio": "desde 49.90    ",
+          "link": ""
+        }
+      },
+      "Local": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number",
+            "description": "numero de la boleta",
+            "example": 1
+          },
+          "name": {
+            "type": "string",
+            "description": "xxx",
+            "example": "Curtación"
+          },
+          "direccion": {
+            "type": "string",
+            "description": "xxx",
+            "example": "desde 99.99"
+          },
+          "horario": {
+            "type": "string",
+            "description": "xxx",
+            "example": "Despachado"
+          }
+        },
+        "example": {
+          "id": "015673",
+          "name": "Patacure",
+          "direccion": "av san miguel 342",
+          "horario": "9am a 6pm"
+        }
+      },
+      "myReferencedProductArray": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/Producto"
+        }
+      },
+      "myReferencedLocalArray": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/Local"
+        }
+      }
+    }
+  }
+}
